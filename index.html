@@ -177,7 +177,7 @@
                     <!-- To make this form functional, sign up at-->
                     <!-- https://startbootstrap.com/solution/contact-forms-->
                     <!-- to get an API token!-->
-                    <form id="submit" data-splitbee-event="Submit Form">
+                    <!-- <form id="submit" data-splitbee-event="Submit Form">
                         <div class="row">
                             <div class="col">
                                 <input class="form-control form-control-lg" placeholder="Email Address" type="email"
@@ -193,7 +193,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
@@ -243,6 +243,18 @@
         document.getElementById("submit").addEventListener("submit", function (event) {
             event.preventDefault();
             alert("Thank you for your submission");
+        });
+
+        const form = document.querySelector('#submit');
+        const emailField = form.querySelector('.form-control');
+        const submitBtn = form.querySelector('#submitButton');
+
+        emailField.addEventListener('input', () => {
+            if (emailField.validity.valid) {
+                submitBtn.removeAttribute('disabled');
+            } else {
+                submitBtn.setAttribute('disabled', true);
+            }
         });
     </script>
 </body>
